@@ -1,8 +1,8 @@
-<?php
-class Home
+<?
+class Home{
+
+public function index()
 {
-  public function index()
-  {
-    echo 'Home/index';
-  }
+    echo 'home/index';
+}
 }
