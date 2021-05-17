@@ -6,15 +6,20 @@ class App
   protected $param=[];
   public function __construct()
   {
+    
     $url= $this->parsingURL();
+    if($url==NULL)
+    {
+      $url=[$this->controller];
+    }
     if(file_exists('../app/controllers/'.$url[0].'.php'))
     {
       $this->controller = $url[0];
       
       unset($url[0]);
-
     }
-    require '../app/controllers/'.$this->controller.'.php';
+    
+    require '../app/controllers/' . $this->controller . '.php';
     $this->controller = new $this->controller;
 
     //methods
@@ -27,7 +32,10 @@ class App
       }
     }
     //param kelola
-
+if(!empty($url))
+{
+  var_dump($url);
+}
   }
 
   //Nge parsing url
